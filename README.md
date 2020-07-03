@@ -1,4 +1,4 @@
-### بسم الله الرحم الرحيم
+# بسم الله الرحمن الرحيم
 
 ## CalJS
 a simple js calaculator that do - + / * ^ operations.  
