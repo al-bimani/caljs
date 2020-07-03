@@ -171,10 +171,18 @@ function Ast(tknst) {
   };
 }
 function calc(expr) {
-  const inst = Inst(expr);
-  const tknst = Tknst(inst);
-  const ast = Ast(tknst);
-  const prog = ast.parse();
-  return evaulate(prog);
+  return new Promise((reslove, reject) => {
+    try {
+      const inst = Inst(expr);
+      const tknst = Tknst(inst);
+      const ast = Ast(tknst);
+      const prog = ast.parse();
+      if (!tknst.eof()) throwSyntaxError();
+      let result = evaulate(prog);
+      reslove(result);
+    } catch (err) {
+      reject(err);
+    }
+  });
 }
 exports.calc = calc;

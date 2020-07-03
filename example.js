@@ -23,8 +23,13 @@ client.on("message", (message) => {
       .slice(command.length)
       .trim();
 
-    let result = Caljs.calc(expression);
-    message.channel.send(result);
+    Caljs.calc(expression)
+      .then((result) => {
+        message.channel.send(result);
+      })
+      .catch((err) => {
+        message.channel.send(`${err}`);
+      });
   }
 });
 
