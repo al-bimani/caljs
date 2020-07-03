@@ -7,6 +7,7 @@ pass an expression like `"1 / 0.5 * (6 - 5)"` as a string
 a promise will resolve the result or reject errors if any  
 
 ### usage
+clone this repository `git clone https://github.com/al-bimani/caljs.git`  
 the `example.js` file contains an example of using this calaculator  
 with a discord bot. if you wish to test the example
 run `npm install` or install the packages with whatever pacakage manager you use.  
