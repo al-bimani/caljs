@@ -58,7 +58,7 @@ function evaulate(exp) {
       case "/":
         return num(a) / div(b);
       case "^":
-        return Math.pow(a, b);
+        return Math.pow(num(a), num(b));
     }
   }
   throwSyntaxError();
