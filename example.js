@@ -1,36 +1,21 @@
-require("dotenv").config();
+const calc = require("./caljs");
 
-const Discord = require("discord.js");
-const Caljs = require("./caljs");
+let expr;
 
-const client = new Discord.Client();
-const prefix = ".";
+expr = "5 - 5 ^(-6--3) + 5 +3";
+console.log(expr, "=", calc.eval(expr), "\n");
 
-client.on("message", (message) => {
-  if (message.author.bot) return;
+expr = "10 * log(1)";
+console.log(expr, "=", calc.eval(expr), "\n");
 
-  if (message.content.indexOf(prefix) != 0) return;
+expr = "pow(sin(15), 2) + pow(cos(15), 2)";
+console.log(expr, "=", calc.eval(expr), "\n");
 
-  const [command, ...args] = message.content
-    .slice(prefix.length)
-    .trim()
-    .split(/ +/g);
+expr = "sin(15) ^ 2 + cos(15) ^ 2";
+console.log(expr, "=", calc.eval(expr), "\n");
 
-  if (command == "calc") {
-    let expression = message.content
-      .slice(prefix.length)
-      .trim()
-      .slice(command.length)
-      .trim();
+expr = "4 + -5 * -6 - -7";
+console.log(expr, "=", calc.eval(expr), "\n");
 
-    Caljs.calc(expression)
-      .then((result) => {
-        message.channel.send(result);
-      })
-      .catch((err) => {
-        message.channel.send(`${err}`);
-      });
-  }
-});
-
-client.login(process.env.BOT_TOKEN);
+expr = "(PI * 5 ^ 2) / 5";
+console.log(expr, "=", calc.eval(expr), "\n");
